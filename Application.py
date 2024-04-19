@@ -3,6 +3,12 @@ import streamlit as st
 # Liste des modèles disponibles
 MODELS = ['Arbre de décision', 'Forêt aléatoire', 'XGBoost', 'Réseaux de neurones avec Word Embedding', 'Réseau de neurones récurrents']
 
+# Chargement des modèles pré-entrainés
+filename3 = path+"tree.pkl"
+with open(filename1, "rb") as f:
+    tree = pickle.load(f)
+
+
 # Sélection du modèle
 selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
 
@@ -11,6 +17,7 @@ if selected_model == 'Arbre de décision':
     st.sidebar.markdown("""
     L'arbre de décision est un modèle d'apprentissage supervisé utilisé pour la classification et la régression. Il divise l'espace des caractéristiques en partitions rectangulaires, chaque partition étant associée à une classe ou une valeur de sortie.
     """)
+    model = tree
 elif selected_model == 'Forêt aléatoire':
     st.sidebar.markdown("""
     La forêt aléatoire est un ensemble d'arbres de décision. Chaque arbre est construit sur un sous-ensemble aléatoire des données d'entraînement et utilise une sous-ensemble aléatoire des caractéristiques pour la division.
@@ -37,10 +44,7 @@ comment = st.text_area("Saisissez votre commentaire ici")
 # Bouton pour soumettre le commentaire
 if st.button("Valider"):
     if comment:
-        # Placeholder pour la prédiction du sentiment
-        # Ici, vous pouvez ajouter la logique pour prédire le sentiment en fonction du modèle sélectionné
-        # Par exemple, vous pouvez appeler une fonction qui utilise le modèle sélectionné pour prédire le sentiment du commentaire
-        # Puis, afficher le résultat de la prédiction (positif, négatif ou neutre)
+        
         st.write("Sentiment prédit : Positif")
     else:
         st.warning("Veuillez saisir un commentaire.")
