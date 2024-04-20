@@ -6,12 +6,9 @@ import pickle
 MODELS = ['Arbre de décision', 'Forêt aléatoire', 'XGBoost', 'Réseaux de neurones avec Word Embedding', 'Réseau de neurones récurrents']
 
 # Chargement du vocabulaire et des modèles pré-entrainés
- 
-with open("vectorize.pkl", "rb") as f:
-    vectorize = pickle.load(f)
+vectorize = pickle.load(open("vectorize.pkl", "rb"))
     
-with open("tree.pkl", "rb") as f:
-    tree = pickle.load(f)
+tree = pickle.load(open("tree.pkl", "rb"))
 
 # Sélection du modèle
 selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
