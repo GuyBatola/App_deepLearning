@@ -48,7 +48,7 @@ comment = st.text_area("Saisissez votre commentaire ici")
 # Bouton pour soumettre le commentaire
 if st.button("Valider"):
     if comment:
-        a = vectorizer_loaded.transform([comment])
+        a = vectorize.transform([comment])
         sentiment = model.predict(a)
         st.write("Sentiment prédit : ", sentiment)
     else:
