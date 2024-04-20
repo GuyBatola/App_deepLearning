@@ -10,7 +10,7 @@ vectorize = pickle.load(open("vectorizer.pkl", "rb"))
     
 tree = pickle.load(open("tree.pkl", "rb"))
 xgb = pickle.load(open("xgb.pkl", "rb"))
-neurone = pickle.load(open("tree.pkl", "rb"))
+neural = pickle.load(open("neural.pkl", "rb"))
 # Sélection du modèle
 selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
 
@@ -34,12 +34,12 @@ elif selected_model == 'Réseau de neurones':
     st.sidebar.markdown("""
     Le réseau de neurones avec Word Embedding utilise une couche d'embedding pour convertir les mots en vecteurs denses avant de les passer au réseau de neurones. Cela permet au modèle de capturer les relations sémantiques entre les mots.
     """)
-    model = tree
+    model = neural
 elif selected_model == 'Réseau de neurones récurrents':
     st.sidebar.markdown("""
     Le réseau de neurones récurrents (RNN) est un type de réseau de neurones capable de traiter des données séquentielles. Il utilise des boucles récurrentes pour partager les mêmes poids à chaque pas de temps, ce qui permet de capturer les dépendances séquentielles dans les données.
     """)
-    model = tree
+    model = neural
 
 st.write('# Projet Deep Learning')
 st.write('## Auteurs : Guy BATOLA, Yann OYE, Idrissa Belem, Alimatou DIOP')
@@ -67,6 +67,16 @@ if st.button("Valider"):
                 sentiment2 = "Mitige"
                 st.write("Sentiment prédit : ", sentiment2)
         else:
-             modelneurone.predict(a.toarray()).argmax(-1)
+            a = vectorize.transform([comment])
+            sentiment = model.predict(a.toarray()).argmax(-1)
+            if sentiment=="2" :
+                sentiment2 = "Positif"
+                st.write("Sentiment prédit : ", sentiment2)
+            elif sentiment=="1" :
+                sentiment2 = "Negatif"
+                st.write("Sentiment prédit : ", sentiment2)
+            else :
+                sentiment2 = "Mitige"
+                st.write("Sentiment prédit : ", sentiment2)
     else:
         st.warning("Veuillez saisir un commentaire.")
