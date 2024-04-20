@@ -53,14 +53,15 @@ if st.button("Valider"):
         if selected_model == 'tree':
             a = vectorize.transform([comment])
             sentiment = model.predict(a)
+            st.write("Sentiment prédit : ", sentiment)
         # RF et XGB
         elif selected_model == 'Forêt aléatoire' or selected_model == 'XGBoost' :
             a = vectorize.transform([comment])
             sentiment = model.predict(a)
-            if sentiment=="2" :
+            if sentiment==2 :
                 sentiment2 = "Positif"
                 st.write("Sentiment prédit : ", sentiment2)
-            elif sentiment=="1" :
+            elif sentiment==1 :
                 sentiment2 = "Negatif"
                 st.write("Sentiment prédit : ", sentiment2)
             else :
@@ -69,10 +70,10 @@ if st.button("Valider"):
         else:
             a = vectorize.transform([comment])
             sentiment = model.predict(a.toarray()).argmax(-1)
-            if sentiment=="2" :
+            if sentiment==2 :
                 sentiment2 = "Positif"
                 st.write("Sentiment prédit : ", sentiment2)
-            elif sentiment=="1" :
+            elif sentiment==1 :
                 sentiment2 = "Negatif"
                 st.write("Sentiment prédit : ", sentiment2)
             else :
