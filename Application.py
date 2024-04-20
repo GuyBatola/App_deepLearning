@@ -43,6 +43,9 @@ elif selected_model == 'Réseau de neurones récurrents':
 
 st.write('# Projet Deep Learning')
 st.write('## Auteurs : Guy BATOLA, Yann OYE, Idrissa Belem, Alimatou DIOP')
+st.write('### Objectif : ')
+st.write("""construction un modèle capable de prédire le sentiment sur "Fine Foods" et de le déployer sous forme de service web pour votre client.""")
+
 # Zone de texte pour saisir le commentaire
 comment = st.text_area("Saisissez votre commentaire ici")
 
