@@ -33,7 +33,7 @@ if selected_model == 'Réseau de neurones':
     Le réseau de neurones avec Word Embedding utilise une couche d'embedding pour convertir les mots en vecteurs denses avant de les passer au réseau de neurones. Cela permet au modèle de capturer les relations sémantiques entre les mots.
     """)
     model = xgb
-else :
+elif selected_model == 'SentimentIntensityAnalyzer':
     st.sidebar.markdown("""
     SentimentIntensityAnalyzer est un outil de l'outil de traitement du langage naturel (NLP) de NLTK pour analyser les sentiments dans un texte en attribuant des scores de polarité. Il fonctionne en attribuant des valeurs de positivité, 
     négativité, neutralité et composée à chaque phrase en se basant sur des mots-clés et des règles prédéfinis. Ces scores sont calculés en pondérant les mots du texte selon leur contribution à la polarité du texte, permettant ainsi de 
