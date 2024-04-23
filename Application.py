@@ -68,8 +68,19 @@ if st.button("Valider"):
             else :
                 sentiment2 = "Mitige"
                 st.write("Sentiment prédit : ", sentiment2)
+                
+            probas = model.predict_proba([comment])
+            st.write("Probabilité que le message écrit soit positif : ", probas[2])
+            st.write("Probabilité que le message écrit soit négatif : ", probas[0])
+            st.write("Probabilité que le message écrit soit neutre : ", probas[1])
         else:
-            sentiment = sentiment_predit(comment)
+            reponse = sentiment_predit(comment)
+            sentiment = reponse[0]
+            probas = reponse[1]
             st.write("Sentiment prédit : ", sentiment)
+
+            st.write("Probabilité que le message écrit soit positif : ", probas[2])
+            st.write("Probabilité que le message écrit soit négatif : ", probas[0])
+            st.write("Probabilité que le message écrit soit neutre : ", probas[1])
     else:
         st.warning("Veuillez saisir un commentaire.")
