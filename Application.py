@@ -53,7 +53,7 @@ comment = st.text_area("Saisissez votre commentaire ici")
 if st.button("Valider"):
     if comment:
         # XGB
-        if selected_model == 'XGBoost' :
+        if selected_model == 'Réseaux de neurones' :
             a = vectorize.transform([comment])
             sentiment = model.predict(a)
             if sentiment==2 :
@@ -66,7 +66,7 @@ if st.button("Valider"):
                 sentiment2 = "Mitige"
                 st.write("Sentiment prédit : ", sentiment2)
         else:
-            sentiment = sentiment_predit(sentiment)
+            sentiment = sentiment_predit(comment)
             st.write("Sentiment prédit : ", sentiment)
     else:
         st.warning("Veuillez saisir un commentaire.")
