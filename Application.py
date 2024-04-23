@@ -3,6 +3,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
 from nltk.sentiment import SentimentIntensityAnalyzer
 import nltk
+import numpy as np
+
 
 nltk.download('vader_lexicon')
 sia = SentimentIntensityAnalyzer()
