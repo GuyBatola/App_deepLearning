@@ -5,6 +5,7 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 import nltk
 
 nltk.download('vader_lexicon')
+sia = SentimentIntensityAnalyzer()
 # Liste des modèles disponibles
 MODELS = ['Réseaux de neurones', 'SentimentIntensityAnalyzer']
 
