@@ -1,7 +1,10 @@
 import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
+from nltk.sentiment import SentimentIntensityAnalyzer
+import nltk
 
+nltk.download('vader_lexicon')
 # Liste des modèles disponibles
 MODELS = ['Réseaux de neurones', 'SentimentIntensityAnalyzer']
 
