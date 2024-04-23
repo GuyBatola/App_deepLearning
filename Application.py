@@ -28,7 +28,7 @@ def sentiment_predit(text):
 selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
 
 # Affichage de l'explication du modèle sélectionné
-if selected_model == 'Réseau de neurones':
+if selected_model == 'Réseaux de neurones':
     st.sidebar.markdown("""
     Le réseau de neurones avec Word Embedding utilise une couche d'embedding pour convertir les mots en vecteurs denses avant de les passer au réseau de neurones. Cela permet au modèle de capturer les relations sémantiques entre les mots.
     """)
