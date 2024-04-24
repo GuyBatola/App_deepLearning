@@ -58,7 +58,7 @@ comment = st.text_area("Saisissez votre commentaire ici")
 # Bouton pour soumettre le commentaire
 if st.button("Valider"):
     if comment:
-        # XGB
+        # RNN
         if selected_model == 'Réseaux de neurones recurrent' :
             a = vectorize.transform([comment])
             probas = rnn.predict(a.toarray())
