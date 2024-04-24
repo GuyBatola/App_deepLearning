@@ -47,8 +47,9 @@ elif selected_model == 'SentimentIntensityAnalyzer':
 st.write('# Projet Deep Learning')
 st.write('## Auteurs : Guy BATOLA, Yann OYE, Idrissa Belem, Alimatou DIOP')
 st.write('### Objectif : ')
-st.write("""Construction d'un modèle capable de prédire le sentiment sur "Fine Foods" et de le déployer sous forme de service web pour votre client.
-            Nous avons utiliser notre propore modèle de deep learning et un existent dans le package ntlk
+st.write("""Construction d'un modèle capable de prédire le sentiment sur "Fine Foods" et le déployer sous forme de service web pour un client.
+            Nous avons utilisé notre propore modèle de deep learning utilisant des réseaux de neuronnes récurrents. En bonus, nous avons intégré
+            un autre modèle de NLP, préentrainé du package ntlk
         """)
 
 # Zone de texte pour saisir le commentaire
