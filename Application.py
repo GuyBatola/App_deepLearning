@@ -35,7 +35,7 @@ if selected_model == 'Réseaux de neurones recurrent':
     st.sidebar.markdown("""
     Le réseau de neurones avec Word Embedding utilise une couche d'embedding pour convertir les mots en vecteurs denses avant de les passer au réseau de neurones. Cela permet au modèle de capturer les relations sémantiques entre les mots.
     """)
-    model = rnn
+   
 elif selected_model == 'SentimentIntensityAnalyzer':
     st.sidebar.markdown("""
     SentimentIntensityAnalyzer est un outil de l'outil de traitement du langage naturel (NLP) de NLTK pour analyser les sentiments dans un texte en attribuant des scores de polarité. Il fonctionne en attribuant des valeurs de positivité, 
@@ -60,7 +60,7 @@ if st.button("Valider"):
         # XGB
         if selected_model == 'Réseaux de neurones recurrent' :
             a = vectorize.transform([comment])
-            probas = model.predict(a.toarray())
+            probas = rnn.predict(a.toarray())
             sentiment = probas.argmax(-1)
             if sentiment==2 :
                 sentiment2 = "Positif"
