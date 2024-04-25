@@ -62,8 +62,8 @@ if st.button("Valider"):
     if comment:
         # RNN
         if selected_model == 'Réseaux de neurones recurrent' :
-            a = rnn.transform([comment])
-            proba = modelneurone.predict(a.toarray()[:,top_features_boolean])
+            a = vectorize.transform([comment])
+            proba = rnn.predict(a.toarray()[:,top_features_boolean])
             sentiment = proba.argmax(-1)
             if sentiment == 0:
                 st.write("Sentiment prédit : ",  "Negatif")
