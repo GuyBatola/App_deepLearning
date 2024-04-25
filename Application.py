@@ -55,7 +55,7 @@ st.write("""Construction d'un modèle capable de prédire le sentiment sur "Fine
         """)
 
 # Zone de texte pour saisir le commentaire
-comment = st.text_area("Saisissez votre commentaire ici")
+comment = st.text_area("Saisissez votre commentaire ici (en anglais) ")
 
 # Bouton pour soumettre le commentaire
 if st.button("Valider"):
