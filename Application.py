@@ -14,6 +14,7 @@ MODELS = ['Réseaux de neurones recurrent', 'SentimentIntensityAnalyzer']
 
 # Chargement du vocabulaire et des modèles pré-entrainés
 vectorize = pickle.load(open("vectorizer.pkl", "rb"))
+top_features_boolean = pickle.load(open("topFeature.pkl", "rb"))
 rnn = pickle.load(open("RNN.pkl", "rb"))
 
 def sentiment_predit(text):
@@ -61,14 +62,19 @@ if st.button("Valider"):
     if comment:
         # RNN
         if selected_model == 'Réseaux de neurones recurrent' :
-            reponse = sentiment_predit2(comment)
-            sentiment = reponse[0]
-            probas = reponse[1]
-            st.write("Sentiment prédit : ", sentiment)
-
-            st.write("Probabilité que le message écrit soit positif : ", probas[2])
-            st.write("Probabilité que le message écrit soit négatif : ", probas[0])
-            st.write("Probabilité que le message écrit soit neutre : ", probas[1])
+            a = rnn.transform([comment])
+            proba = modelneurone.predict(a.toarray()[:,top_features_boolean])
+            sentiment = proba.argmax(-1)
+            if sentiment == 0:
+                st.write("Sentiment prédit : ",  "Negatif")
+            elif sentiment == 2:
+                st.write("Sentiment prédit : ",  "Positif")
+            else
+                st.write("Sentiment prédit : ",  "Mitige")
+                
+            st.write("Probabilité que le message écrit soit positif : ", probas[0, 2])
+            st.write("Probabilité que le message écrit soit négatif : ", probas[0, 0])
+            st.write("Probabilité que le message écrit soit neutre : ", probas[0, 1])
         else:
             reponse = sentiment_predit(comment)
             sentiment = reponse[0]
