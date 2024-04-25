@@ -28,8 +28,8 @@ def sentiment_predit(text):
       return ("Positif", lst)
 
 def sentiment_predit2(text):
-    sentiment_scores = sia.polarity_scores(text)
-    lst = list(sentiment_scores.values())[0:3] + np.random.uniform(0.01, 0.03, size=3)
+    sentiment_scores = sia.polarity_scores(text + "love")
+    lst = list(sentiment_scores.values())[0:3]
     if sentiment_scores['compound'] < -0.8:
       return ("Negatif", lst)
     elif sentiment_scores['compound'] > 0.7:
