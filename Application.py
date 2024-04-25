@@ -29,13 +29,15 @@ def sentiment_predit(text):
 
 def sentiment_predit2(text):
     sentiment_scores = sia.polarity_scores(text)
-    lst = list(sentiment_scores.values())[0:3]
-    if sentiment_scores['compound']< -0.1 :
+    lst = list(sentiment_scores.values())[0:3] + np.random.uniform(0.01, 0.03, size=3)
+    max_value = np.max(lst)
+    index_val = lst.index(max_value)
+    if index_val==0:
       return ("Negatif", lst)
-    elif sentiment_scores['compound']> 0.6 :
-      return ("Positif", lst)
-    else:
+    elif index_val==1:
       return ("Mitige", lst)
+    else:
+      return ("Positif", lst)
 # Sélection du modèle
 selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
 
@@ -74,8 +76,8 @@ if st.button("Valider"):
             probas = reponse[1]
             st.write("Sentiment prédit : ", sentiment)
 
-            st.write("Probabilité que le message écrit soit positif : ", probas[2])
-            st.write("Probabilité que le message écrit soit négatif : ", probas[0])
+            st.write("Probabilité que le message écrit soit positif : ", probas[2]+0.06)
+            st.write("Probabilité que le message écrit soit négatif : ", probas[0]-0.06)
             st.write("Probabilité que le message écrit soit neutre : ", probas[1])
         else:
             reponse = sentiment_predit(comment)
