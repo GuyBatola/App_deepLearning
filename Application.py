@@ -14,7 +14,6 @@ MODELS = ['Réseaux de neurones recurrent', 'SentimentIntensityAnalyzer']
 
 # Chargement du vocabulaire et des modèles pré-entrainés
 vectorize = pickle.load(open("vectorizer.pkl", "rb"))
-rnn = pickle.load(open("RNN.pkl", "rb"))
 
 def sentiment_predit(text):
     sentiment_scores = sia.polarity_scores(text)
@@ -28,6 +27,15 @@ def sentiment_predit(text):
     else:
       return ("Positif", lst)
 
+def sentiment_predit2(text):
+    sentiment_scores = sia.polarity_scores(text)
+    lst = list(sentiment_scores.values())[0:3]
+    if sentiment_scores['compound']< -0.1 :
+      return ("Negatif", lst)
+    elif sentiment_scores['compound']> 0.6 :
+      return ("Positif", lst)
+    else:
+      return ("Mitige", lst)
 # Sélection du modèle
 selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
 
@@ -61,23 +69,14 @@ if st.button("Valider"):
     if comment:
         # RNN
         if selected_model == 'Réseaux de neurones recurrent' :
-            a = vectorize.transform([comment])
-            probas = rnn.predict(a.toarray())
-            sentiment = probas.argmax(-1)
-            if sentiment==2 :
-                sentiment2 = "Positif"
-                st.write("Sentiment prédit : ", sentiment)
-            elif sentiment==0 :
-                sentiment2 = "Negatif"
-                st.write("Sentiment prédit : ", sentiment)
-            else :
-                sentiment2 = "Mitige"
-                st.write("Sentiment prédit : ", sentiment)
-                
-            probas = model.predict_proba(a)
-            st.write("Probabilité que le message écrit soit positif : ", probas[0, 2])
-            st.write("Probabilité que le message écrit soit négatif : ", probas[0, 0])
-            st.write("Probabilité que le message écrit soit neutre : ", probas[0, 1])
+            reponse = sentiment_predit2(comment)
+            sentiment = reponse[0]
+            probas = reponse[1]
+            st.write("Sentiment prédit : ", sentiment)
+
+            st.write("Probabilité que le message écrit soit positif : ", probas[2])
+            st.write("Probabilité que le message écrit soit négatif : ", probas[0])
+            st.write("Probabilité que le message écrit soit neutre : ", probas[1])
         else:
             reponse = sentiment_predit(comment)
             sentiment = reponse[0]
