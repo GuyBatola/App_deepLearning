@@ -1,4 +1,4 @@
- deimport streamlit as st
+import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
 from tensorflow.keras.layers import LSTM, Dense, SimpleRNN
