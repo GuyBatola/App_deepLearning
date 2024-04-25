@@ -30,14 +30,12 @@ def sentiment_predit(text):
 def sentiment_predit2(text):
     sentiment_scores = sia.polarity_scores(text)
     lst = list(sentiment_scores.values())[0:3] + np.random.uniform(0.01, 0.03, size=3)
-    max_value = np.max(lst)
-    index_val = lst.index(max_value)
-    if index_val==0:
+    if sentiment_scores['compound'] < -0.8:
       return ("Negatif", lst)
-    elif index_val==1:
-      return ("Mitige", lst)
-    else:
+    elif sentiment_scores['compound'] > 0.7:
       return ("Positif", lst)
+    else:
+      return ("Mitige", lst)
 # Sélection du modèle
 selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
 
