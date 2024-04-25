@@ -53,7 +53,7 @@ st.write('## Auteurs : Guy BATOLA, Yann OYE, Idrissa Belem, Alimatou DIOP')
 st.write('### Objectif : ')
 st.write("""Construction et deploiement sous forme de service web d'un modèle capable de prédire le sentiment le sentiment exprimé par un commentaire sur "Fine Food".
             Nous avons utilisé notre propre modèle de deep learning utilisant des réseaux de neuronnes récurrents. En bonus, nous avons intégré
-            un autre modèle de NLP, pré-entrainé du package ntlk afin de jauger nos modèles.
+            un autre modèle de NLP (SentimentIntensityAnalyzer), pré-entrainé du package ntlk afin de jauger notre modèles.
         """)
 
 # Zone de texte pour saisir le commentaire
