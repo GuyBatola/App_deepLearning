@@ -14,6 +14,7 @@ MODELS = ['Réseaux de neurones recurrent', 'SentimentIntensityAnalyzer']
 
 # Chargement du vocabulaire et des modèles pré-entrainés
 vectorize = pickle.load(open("vectorizer.pkl", "rb"))
+rnn = pickle.load(open("RNN.pkl", "rb"))
 
 def sentiment_predit(text):
     sentiment_scores = sia.polarity_scores(text)
@@ -27,15 +28,6 @@ def sentiment_predit(text):
     else:
       return ("Positif", lst)
 
-def sentiment_predit2(text):
-    sentiment_scores = sia.polarity_scores(text + "love")
-    lst = list(sentiment_scores.values())[0:3]
-    if sentiment_scores['compound'] < -0.8:
-      return ("Negatif", lst)
-    elif sentiment_scores['compound'] > 0.7:
-      return ("Positif", lst)
-    else:
-      return ("Mitige", lst)
 # Sélection du modèle
 selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
 
