@@ -67,16 +67,25 @@ if st.button("Valider"):
             a = vectorize.transform([comment])
             proba = rnn.predict(a.toarray()[:,top_features_boolean])
             sentiment = proba.argmax(-1)
-            if sentiment == 0:
-                st.write("Sentiment prédit : ",  "Negatif")
-            elif sentiment == 2:
+            if proba[0, 2] >0.8 :
                 st.write("Sentiment prédit : ",  "Positif")
+
+                st.write("Probabilité que le message écrit soit positif : ", proba[0, 2])
+                st.write("Probabilité que le message écrit soit négatif : ", proba[0, 0])
+                st.write("Probabilité que le message écrit soit neutre : ", proba[0, 1])
+                
+            elif proba[0, 0] > 0.15:
+                st.write("Sentiment prédit : ",  "Negatif")
+
+                st.write("Probabilité que le message écrit soit positif : ", proba[0, 0])
+                st.write("Probabilité que le message écrit soit négatif : ", proba[0, 2])
+                st.write("Probabilité que le message écrit soit neutre : ", proba[0, 1])
             else :
                 st.write("Sentiment prédit : ",  "Mitige")
                 
-            st.write("Probabilité que le message écrit soit positif : ", proba[0, 2])
-            st.write("Probabilité que le message écrit soit négatif : ", proba[0, 0])
-            st.write("Probabilité que le message écrit soit neutre : ", proba[0, 1])
+                st.write("Probabilité que le message écrit soit positif : ", proba[0, 1])
+                st.write("Probabilité que le message écrit soit négatif : ", proba[0, 0])
+                st.write("Probabilité que le message écrit soit neutre : ", proba[0, 2])
         else:
             reponse = sentiment_predit(comment)
             sentiment = reponse[0]
