@@ -15,7 +15,7 @@ MODELS = ['Réseaux de neurones recurrent', 'SentimentIntensityAnalyzer']
 # Chargement du vocabulaire et des modèles pré-entrainés
 vectorize = pickle.load(open("vectorizer.pkl", "rb"))
 top_features_boolean = pickle.load(open("topFeature.pkl", "rb"))
-rnn = pickle.load(open("RNN.pkl", "rb"))
+rnn = pickle.load(open("neural.pkl", "rb"))
 
 def sentiment_predit(text):
     sentiment_scores = sia.polarity_scores(text)
