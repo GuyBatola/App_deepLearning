@@ -35,7 +35,9 @@ selected_model = st.sidebar.selectbox("Sélectionnez un modèle", MODELS)
 # Affichage de l'explication du modèle sélectionné
 if selected_model == 'Réseaux de neurones recurrent':
     st.sidebar.markdown("""
-    Le réseau de neurones avec Word Embedding utilise une couche d'embedding pour convertir les mots en vecteurs denses avant de les passer au réseau de neurones. Cela permet au modèle de capturer les relations sémantiques entre les mots.
+    Les réseaux de neurones récurrents (RNN) sont une architecture de réseau de neurones adaptée au traitement de données séquentielles, où l'information peut circuler entre les étapes de temps successives. Ils utilisent une boucle récurrente 
+    pour maintenir une mémoire à court terme, permettant de capturer des dépendances temporelles dans les données. Les RNN sont largement utilisés dans des applications telles que la traduction automatique, la génération de texte et la prédiction 
+    de séries temporelles.
     """)
    
 elif selected_model == 'SentimentIntensityAnalyzer':
