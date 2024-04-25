@@ -69,7 +69,7 @@ if st.button("Valider"):
                 st.write("Sentiment prédit : ",  "Negatif")
             elif sentiment == 2:
                 st.write("Sentiment prédit : ",  "Positif")
-            else
+            else :
                 st.write("Sentiment prédit : ",  "Mitige")
                 
             st.write("Probabilité que le message écrit soit positif : ", probas[0, 2])
